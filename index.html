@@ -1,486 +1,910 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Manisha | 24th Birthday</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box
+        :root {
+            --primary: #ff7eb3;
+            --secondary: #ff9ecd;
+            --accent: #ffd6e8;
+            --dark: #fff5f7;
+            --light: #ffffff;
+            --text: #6b4c5e;
+            --gradient: linear-gradient(135deg, #ff7eb3 0%, #ff9ecd 50%, #ffc4e1 100%);
+            --gradient-2: linear-gradient(135deg, #ffe4ec 0%, #fff0f5 100%);
+            --hearts: #ff6b9d;
         }
 
-        ::-webkit-scrollbar {
-            display:none;
-            width: 0px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html {
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                'Segoe UI',
-                'Roboto',
-                'Oxygen',
-                'Ubuntu',
-                'Cantarell',
-                'Fira Sans',
-                'Droid Sans',
-                'Helvetica Neue',
-                sans-serif;
-
-                user-select: none;
-                -webkit-user-drag: none;
-                -webkit-user-select: none;
+            scroll-behavior: smooth;
         }
 
-        /* Slideshow container */
-        .slideshow-container {
-            max-width: 100vw;
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--accent);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             position: relative;
-            margin-bottom: 30px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #ffe4ec 0%, #fff0f5 30%, #fff5f7 70%, #ffe4ec 100%);
         }
 
-
-        /* Hide the images by default */
-        .mySlides {
-            display: none;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 126, 179, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 158, 205, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 214, 232, 0.3) 0%, transparent 50%);
+            animation: pulse 6s ease-in-out infinite;
         }
 
-        /* Next & previous buttons */
-        .prev,
-        .next {
-            cursor: pointer;
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z' fill='%23ff7eb3' fill-opacity='0.03'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-elements span {
+            position: absolute;
+            font-size: 1.8rem;
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.8;
+            filter: drop-shadow(0 2px 4px rgba(255, 107, 157, 0.3));
+        }
+
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: heartFloat 10s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes heartFloat {
+            0%, 100% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(0.5); opacity: 0; }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .hero-content {
+            z-index: 10;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out, glow 3s ease-in-out infinite alternate;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 4px 8px rgba(255, 126, 179, 0.3));
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(255, 126, 179, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(255, 158, 205, 0.8)); }
+        }
+
+        .hero h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 600;
+            color: var(--hearts);
+            animation: fadeInUp 1s ease-out 0.3s both;
+            letter-spacing: 0.05em;
+            text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.2);
+        }
+
+        .age-badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1rem 2.5rem;
+            background: var(--gradient);
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            box-shadow: 0 10px 30px rgba(255, 126, 179, 0.4);
+            border: 3px solid white;
+            color: white;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-right: 3px solid var(--primary);
+            border-bottom: 3px solid var(--primary);
+            transform: rotate(45deg);
+            animation: arrowGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes arrowGlow {
+            0%, 100% { border-color: var(--primary); filter: drop-shadow(0 0 5px var(--primary)); }
+            50% { border-color: var(--secondary); filter: drop-shadow(0 0 10px var(--secondary)); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #fff5f7 0%, #ffe4ec 100%);
+            position: relative;
+        }
+
+        .message-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23fff5f7' d='M0,50 Q360,100 720,50 T1440,50 V100 H0 Z'/%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 3px solid rgba(255, 158, 205, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 126, 179, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+        }
+
+        .message-card::before {
+            content: '💖';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(255, 126, 179, 0.2);
+        }
+
+        .message-card::after {
+            content: '✨ 🌸 ✨';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            background: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(255, 126, 179, 0.2);
+        }
+
+        .message-card p {
+            color: #8b6b7a;
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .message-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--hearts);
+            font-weight: 700;
+            background: linear-gradient(120deg, rgba(255, 126, 179, 0.2) 0%, rgba(255, 126, 179, 0.2) 100%);
+            padding: 0.1rem 0.3rem;
+            border-radius: 5px;
+        }
+
+        .photos-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #ffe4ec 0%, #ffd6e8 50%, #ffe4ec 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photos-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 192, 203, 0.3) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .photos-section::after {
+            content: '💖 💕 💗 💝 💘 💞';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            opacity: 0.4;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--hearts);
+            text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.2);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '✨';
             position: absolute;
             top: 50%;
-            width: auto;
-            margin-top: -22px;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
         }
 
-        /* Position the "next button" to the right */
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
+        .section-title::before {
+            left: -40px;
         }
 
-        /* On hover, add a black background color with a little bit see-through */
-        .prev:hover,
-        .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+        .section-title::after {
+            right: -40px;
         }
 
-        /* Caption text */
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
+        /* Pinterest-style masonry with minimized thumbnails */
+        .gallery {
+            column-count: 6;
+            column-gap: 0.75rem;
+            padding: 0 1rem;
         }
 
-        /* Number text (1/3 etc) */
-        .numbertext {
-            color: #fff;
-            font-size: 1em;
-            padding: 8px 12px;
-            position: absolute;
-            top: 5px;
-            font-weight: 300;
-            background-color: #333;
-            border: 1px solid red;
-            border-radius: 10px;
-            z-index: 100;
+        @media (max-width: 1400px) {
+            .gallery { column-count: 5; }
         }
 
-        /* The dots/bullets/indicators */
-        .dot {
+        @media (max-width: 1100px) {
+            .gallery { column-count: 4; }
+        }
+
+        @media (max-width: 800px) {
+            .gallery { column-count: 3; }
+        }
+
+        @media (max-width: 500px) {
+            .gallery { column-count: 2; column-gap: 0.5rem; }
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
             cursor: pointer;
-            height: 10px;
-            width: 10px;
-            margin: 0px;
-            background-color: #bbb;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 0.75rem;
+            break-inside: avoid;
+            transform: translateY(var(--parallax-offset, 0));
+            box-shadow: 0 8px 25px rgba(255, 126, 179, 0.15);
+            border: 4px solid white;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(calc(var(--parallax-offset, 0) - 12px)) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 126, 179, 0.4);
+            z-index: 10;
+            border-color: var(--primary);
+        }
+
+        /* Minimized thumbnail height for faster visual loading */
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-item::after {
+            content: '💖';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .videos-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #ffe4ec 0%, #fff0f5 50%, #ffe4ec 100%);
+            position: relative;
+        }
+
+        .videos-section::before {
+            content: '🎀 🎥 💕 🎬 💝';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            opacity: 0.3;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 4px solid rgba(255, 158, 205, 0.3);
+            box-shadow: 0 15px 40px rgba(255, 126, 179, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255, 126, 179, 0.3);
+            border-color: var(--primary);
+        }
+
+        .video-card video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-card .caption {
+            padding: 1.2rem;
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            background: linear-gradient(90deg, rgba(255, 214, 232, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+        }
+
+        .cake-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #fff5f7 0%, #ffe4ec 50%, #ffd6e8 100%);
+            position: relative;
+        }
+
+        .cake-section::before {
+            content: '🎂 🎈 💕 🎁 ✨';
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .cake-image {
+            max-width: 320px;
+            margin: 0 auto 2.5rem;
+            border-radius: 50%;
+            box-shadow: 0 20px 60px rgba(255, 126, 179, 0.4), 0 0 0 8px white, 0 0 0 12px rgba(255, 158, 205, 0.3);
+            animation: fadeInUp 1s ease-out, cakePulse 3s ease-in-out infinite;
+            border: 5px solid white;
+        }
+
+        @keyframes cakePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(255, 126, 179, 0.4), 0 0 0 8px white, 0 0 0 12px rgba(255, 158, 205, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 25px 70px rgba(255, 126, 179, 0.5), 0 0 0 8px white, 0 0 0 15px rgba(255, 158, 205, 0.5); }
+        }
+
+        .love-message {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .love-message p {
+            color: #8b6b7a;
+            font-size: 1.15rem;
+            margin-bottom: 1.2rem;
+            line-height: 2;
+            font-weight: 500;
+        }
+
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #ffe4ec 0%, #ffc4e1 100%);
+            border-top: 5px solid rgba(255, 158, 205, 0.3);
+            position: relative;
+        }
+
+        footer::before {
+            content: '💖 💕 💗 💝 💘 💞 💓 💗 💖';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .made-with {
+            color: var(--text);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .signature {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            margin-top: 1rem;
+        }
+
+        .signature span {
             display: inline-block;
-            transition: background-color 0.6s ease;
+            animation: loveColors 3s infinite;
+            filter: drop-shadow(0 2px 4px rgba(255, 126, 179, 0.3));
         }
 
-        .active {
-            background-color: #717171;
+        @keyframes loveColors {
+            0%, 100% { color: #ff7eb3; }
+            20% { color: #ff6b9d; }
+            40% { color: #ff9ecd; }
+            60% { color: #ff85a2; }
+            80% { color: #ffc4e1; }
         }
 
-        /* Fading animation */
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @keyframes fade {
-            from {
-                filter: blur(4px);
-                transform: scale(1)
+        @media (max-width: 768px) {
+            .message-card {
+                padding: 1.5rem;
             }
-
-            to {
-                filter: blur(0px);
-                transform: scale(1)
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
             }
         }
-    </style>
-    <style>
-        .bgY {
-            background-color: #fff;
-            background-position: center;
-            background-repeat: no-repeat;
-            border: none;
-            padding:5px;
-            border-radius: 20px 20px 20px 20px
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
         }
 
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            line-height: 1;
+        }
     </style>
 </head>
-<style>
-    .anim-1{
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-        animation-name: inOut;
-    }
+<body>
+    <section class="hero">
+        <div class="floating-elements">
+            <span style="top: 10%; left: 10%; animation-delay: 0s;">💖</span>
+            <span style="top: 20%; left: 80%; animation-delay: 1s;">💕</span>
+            <span style="top: 60%; left: 15%; animation-delay: 2s;">💗</span>
+            <span style="top: 70%; left: 85%; animation-delay: 0.5s;">💝</span>
+            <span style="top: 40%; left: 90%; animation-delay: 1.5s;">💘</span>
+            <span style="top: 80%; left: 50%; animation-delay: 2.5s;">💞</span>
+            <span style="top: 15%; left: 50%; animation-delay: 3s;">✨</span>
+            <span style="top: 50%; left: 5%; animation-delay: 3.5s;">🌸</span>
+        </div>
+        
+        <div class="hearts-container" id="hearts-container"></div>
+        
+        <div class="hero-content">
+            <h1>Happy Birthday</h1>
+            <h2>Manisha</h2>
+            <div class="age-badge">Turning 24 🎂</div>
+        </div>
 
-    @keyframes inOut {
-        0% {
-            transform: scale(1);
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <section class="message-section">
+        <div class="container">
+            <div class="message-card">
+                <p>This is a little something that I just prepared for you, my cutie pie. You can also share this with your friends if you want!</p>
+                <p>Manisha, darling, you are someone in my life who has been there in the times of my needs. You give me hope and a reason to stay focused. Before meeting you, I had not known the joy of having someone who wants to be my one and only.</p>
+                <p>You are very cheerful in nature, Mani. Do keep that up and make those around you cheerful too.</p>
+                <p>This year, you will be getting a little older and mature, whereas I get older and weak. I hope you stay as bright and pretty like this forever.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="photos-section">
+        <div class="container">
+            <h2 class="section-title">&#128248; Your Memories</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975355.webp" alt="Memory 1"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975361.webp" alt="Memory 2"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975365.webp" alt="Memory 3"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975371.webp" alt="Memory 4"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975375.webp" alt="Memory 5"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975380.webp" alt="Memory 6"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975384.webp" alt="Memory 7"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975389.webp" alt="Memory 8"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975395.webp" alt="Memory 9"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975399.webp" alt="Memory 10"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975403.webp" alt="Memory 11"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975407.webp" alt="Memory 12"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975411.webp" alt="Memory 13"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975470.webp" alt="Memory 15"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975473.webp" alt="Memory 16"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975477.webp" alt="Memory 17"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975481.webp" alt="Memory 18"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975485.webp" alt="Memory 19"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975492.webp" alt="Memory 20"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975496.webp" alt="Memory 21"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975499.webp" alt="Memory 22"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975503.webp" alt="Memory 23"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975518.webp" alt="Memory 24"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/1647701975521.webp" alt="Memory 25"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/IMG_20250226_103938.webp" alt="Memory 28"></div>
+                <div class="gallery-item"><img loading="lazy" src="mediaMani/IMG_20250226_104314.webp" alt="Memory 29"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="videos-section">
+        <div class="container">
+            <h2 class="section-title">&#127909; Your Videos</h2>
+            <div class="video-grid">
+                <div class="video-card">
+                    <video controls playsinline preload="metadata">
+                        <source src="vid/egg1.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Memories...</div>
+                </div>
+                <div class="video-card">
+                    <video controls playsinline preload="metadata">
+                        <source src="vid/song1.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">The most beautiful voice ever!</div>
+                </div>
+                <div class="video-card">
+                    <video controls playsinline preload="metadata">
+                        <source src="vid/songReact1.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Now you're star No. 1!</div>
+                </div>
+                <div class="video-card">
+                    <video controls playsinline preload="metadata">
+                        <source src="vid/cakeCandle.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Birthday moment!</div>
+                </div>
+                <div class="video-card">
+                    <video controls playsinline preload="metadata">
+                        <source src="vid/talk1.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Sweet talks</div>
+                </div>
+                <div class="video-card">
+                    <video controls playsinline preload="metadata">
+                        <source src="vid/sleep.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Cute sleeping!</div>
+                </div>
+                <div class="video-card">
+                    <video controls playsinline preload="metadata">
+                        <source src="vid/makeInFilter.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Filter magic!</div>
+                </div>
+                <div class="video-card">
+                    <video controls playsinline preload="metadata">
+                        <source src="vid/instaTrindMM.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Instagram trends</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cake-section">
+        <div class="container">
+            <img class="cake-image" src="vid/Cake.jpg" alt="Birthday Cake" loading="lazy">
+            <div class="love-message">
+                <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--hearts);">Happy Birthday My Sweet Heart 💕</h2>
+                <p>I love you and I will be with you there in the future too. I hope you stay healthy and prosper in life.</p>
+                <p>I want to see you happy and strong. I will support you and together we can make great things happen.</p>
+                <p>This is for you, my love. Made for your 24th birthday!</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Full size image">
+    </div>
+
+    <footer>
+        <p class="made-with">This is for you, My Love.</p>
+        <p class="made-with">MADE FOR YOUR 24<sup>th</sup> BIRTHDAY</p>
+        <div class="signature">
+            <span>A</span><span>N</span><span>K</span><span>I</span><span>T</span>
+        </div>
+    </footer>
+
+    <script>
+        // Floating hearts animation
+        const heartsContainer = document.getElementById('hearts-container');
+        const heartEmojis = ['💖', '💕', '💗', '💝', '💘', '💞', '💓', '💗'];
+        
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 13000);
         }
-        50% {
-            transform: scale(.7);
+        
+        setInterval(createFloatingHeart, 2000);
+        
+        // Sparkle effect
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.querySelector('.hero').appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 3000);
         }
-        100%{
-            transform: scale(1);
-        }
-    }
-</style>
-<div class="article">
-    <h1 style="text-align: center;text-transform:uppercase;color:#555;text-shadow:1px 1px 2px white,-1px -1px 2px white;font-size:2.5em" class="anim-1">happy birthday</h1>
-    <h2 style="text-align:center;text-transform:uppercase;color:rgb(224, 56, 84);font-size: 2em;">manisha</h2>
-    <video autoplay muted loop style="width:auto;height: 100%;padding:0px;margin:0px;z-index: -1;position: fixed; right: 0; bottom: 0;top:0;">
-        <source src="vid\cakeCandle.mp4" type="video/mp4"/>
-    </video> 
-    <p style="font-size:1.3em;font-weight:300;padding:1em;color:#bbb">
-        This is a little something that I just prepared for you my cutie pie.
-        You can also share this with your friends if you want by the way &#x1F601;.
-    </p>
-    <p style="font-size:1.35em; font-weight:350;padding:1.2em;color:#bbb">
-        Manisha, darling you are someone in my life who has been there in the times of my needs.
-        You give me hope and a reason to stay focussed at something. Before meeting you, I had not known
-        the joy of having someone who wants to be my one and only. You are very cheerful in nature Mani. Do keep that up
-        and make those around you
-        cheerful too.
-    </p>
-</div>
-    <section class="bgY">
-    <p style="padding:1.4em;font-size:1.4em;font-weight:300">
-        This year, (2022) you will be getting a little older and mature, whereas I get older and weak. I hope you stay
-        as bright and pretty like this for-ever.
-    </p>
-    <p style="font-weight:300;padding:1em;font-size:1.3em">
-        Well neechae hm jo tumhaara kuch kuch photos dia hua hai... dekho
-    </p>
+        
+        setInterval(createSparkle, 800);
 
-<!-- Slideshow container -->
-<div class="slideshow-container">
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = lightbox.querySelector('img');
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
 
-    <!-- Full-width images with number and caption text -->
-    <div class="mySlides">
-        <div class="numbertext">1 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975355.jpg" style="width:100%">
-    </div>
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+                document.getElementById('lightbox').classList.remove('active');
+            }
+        });
 
-    <div class="mySlides">
-        <div class="numbertext">2 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975361.jpg" style="width:100%">
-    </div>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('lightbox').classList.remove('active');
+            }
+        });
 
-    <div class="mySlides">
-        <div class="numbertext">3 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975365.jpg" style="width:100%">
-    </div>
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.addEventListener('play', function() {
+                videos.forEach(v => {
+                    if (v !== video && !v.paused) {
+                        v.pause();
+                    }
+                });
+            });
+        });
 
-    <div class="mySlides">
-        <div class="numbertext">4 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975371.jpg" style="width:100%">
-    </div>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    <div class="mySlides">
-        <div class="numbertext">5 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975375.jpg" style="width:100%">
-    </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-    <div class="mySlides">
-        <div class="numbertext">6 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975380.jpg" style="width:100%">
-    </div>
+        document.querySelectorAll('.gallery-item, .video-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
 
-    <div class="mySlides">
-        <div class="numbertext">7 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975384.jpg" style="width:100%">
-    </div>
+        setTimeout(() => {
+            document.querySelectorAll('.gallery-item, .video-card').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        }, 100);
 
-    <div class="mySlides">
-        <div class="numbertext">8 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975395.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">9 / 26</div>
-        <img class="fade" src="../mediaMani/1647701975389.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">10 / 26</div>
-        <img class="fade" src="mediaMani/1647701975399.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">11 / 26</div>
-        <img class="fade" src="mediaMani/1647701975403.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">12 / 26</div>
-        <img class="fade" src="mediaMani/1647701975407.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">13 / 26</div>
-        <img class="fade" src="mediaMani/1647701975411.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">14 / 26</div>
-        <img class="fade" src="mediaMani/1647701975466.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">15 / 26</div>
-        <img class="fade" src="mediaMani/1647701975470.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">16 / 26</div>
-        <img class="fade" src="mediaMani/1647701975473.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">17 / 26</div>
-        <img class="fade" src="mediaMani/1647701975477.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">18 / 26</div>
-        <img class="fade" src="mediaMani/1647701975481.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">19 / 26</div>
-        <img class="fade" src="mediaMani/1647701975485.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">20 / 26</div>
-        <img class="fade" src="mediaMani/1647701975492.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">21 / 26</div>
-        <img class="fade" src="mediaMani/1647701975496.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">22 / 26</div>
-        <img class="fade" src="mediaMani/1647701975499.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">23 / 26</div>
-        <img class="fade" src="mediaMani/1647701975503.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">24 / 26</div>
-        <img class="fade" src="mediaMani/1647701975518.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">25 / 26</div>
-        <img class="fade" src="mediaMani/1647701975521.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">26 / 26</div>
-        <img class="fade" src="mediaMani/1647701975525.jpg" style="width:100%">
-    </div>
-
-      <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<br>
-</div>
-
-<p style="font-size:1.2em;font-weight:380;padding: .8em">
-Well itna bhi kuch nai tha ye sab upar wala naaa...<br>
-So, hum tumhara kal ka bhi pictures yaha laagaa dia hua hai.<br><br>
-Haalaki tumharaa na data jo hai, wooo tohh jaiga saaayad...<br>
-LOL :)<br><br>
-Ajj ka ye birthday girl apna maatha mae aanda bhi phoor liaaa thtt bechaaraa.
-</p>
-
-<video controls allowFullscreen style="width:100%;height: auto;padding: 2px">
-    <source src="vid\egg1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-<p style="font-size:1.2em;font-weight:380;padding: .8em">
-    Deko...<br><br>
-    Beechaara. But you know, iss baar tumko shampoo nahi chaihye hoga cuz tm laga lia hai apna baal me
-    natural shampoo, haa par gaand aa saktae haha.
-</p>
-<video controls allowFullscreen style="width:100%;height: auto;padding: 2px">
-    <source src="vid\song1.mp4" type="video/mp4"/>
-</video>
-<p style="font-size:1.4em;font-weight:380;padding: .5em">
-    Yeh tohh sunnaa banta hai, the most beatuiful voice everrr.</p>
-    <p style="font-size:1.2em;font-weight:300;padding: .2em">Maaja aa gaya rae...</p>
-    <p style="font-size:1.2em;font-weight:300;padding: .2em">Sereng koi laagiilee buukuu tae juii 
-        <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/fire_1f525.png" style="width: 100px;height:100px;padding: 2px;position:relative;left:100px"/>
-</p>
-<video controls style="width:100%;height: auto;padding: 1px">
-    <source src="vid\songReact1.mp4" type="video/mp4"/>
-</video>
-<p style="font-size:1.4em;font-weight:380;padding: .5em">
-Abhi tum star No. 1 ban hi gaaya babe. 
-</p>
-<img src="vid\Cake.jpg" style="width:80%;height:auto;padding: 5px;display: block; margin-left: auto; margin-right: auto;border-radius: 50%; "/>
-<h2>Happy birthday my sweet Heart</h2>
-<p style="font-size:1.2em;font-weight:380;padding: .8em;text-align: center;">
-I love you and I will be with you there in the future too, you and I with some extra maatha khaanae waala puali...<br>
-I will be a daddy and you be the mommy.<br>
-I hope you stay healthy and prosper in life.<br>
-Taaki tm jo na humko bhi khila pao betha betha k 
-</p>
-
-<p style="font-size:1.3em;font-weight:300;text-transform: capitalize;">
-i want to see you happy and strong, i will support you and together we can make great things happen, hm dono mill k ek poora ghar taal-faal kaar saktaa hai, esee bhi phone me hootae rehta hai naa...
-</p>
-
-<p style="font-size:1.3em;font-weight:300;text-transform: capitalize;">
-ishhh, hum poora dinn laaga ke yee bana dia rae tumharae liyae.
-tum isko aacha sae save karr k raakhna rae
-</p>
-
-<button 
-style="text-align:center;position: relative;left: 25%;margin: 2em;padding: 6px;background-color:#999;border: none;color: white;font-weight:600" 
-onclick="showMore()" id="moreShowButton">More Videos</button>
-
-<section id="more_videos" style="display:none">
-    <video controls style="width:100%;height: auto;padding: 1px">
-        <source src="vid\cakeCandle.mp4" type="video/mp4"/>
-    </video> 
-
-    <video controls style="width:100%;height: auto;padding: 1px">
-        <source src="vid\talk1.mp4" type="video/mp4"/>
-    </video>
-
-    <video controls style="width:100%;height: auto;padding: 1px">
-        <source src="vid\sleep.mp4" type="video/mp4"/>
-    </video>
-
-    <video controls style="width:100%;height: auto;padding: 1px">
-        <source src="vid\makeInFilter.mp4" type="video/mp4"/>
-    </video>   
-    
-    <video controls style="width:100%;height: auto;padding: 1px">
-        <source src="vid\instaTrindMM.mp4" type="video/mp4"/>
-    </video> 
-</section>
-</section>
-<style>
-    footer {
-        background-color:#fff;
-        padding: 1em;
-        margin: 1em;
-        border: 1px solid black;
-        border-radius: 10px;
-        text-align: center;
-        font-size: 1.3em;
-        font-weight: 200;
-        color: #111;
-    }
-</style>
-<footer>
-    <p>This is for you My Love.<br><br>
-    MADE FOR YOUR 20<sup>th</sup> BIRTHDAY</p>
-    <span>- by </span><span style="color:red">A</span><span style="color:blue">N</span><span style="color:green">K</span>
-    <span style="color:orangered">I</span><span style="color:indigo">T</span> Saikia
-</footer>
-
-<script>
-    let slideIndex = 25;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
-</script>
-
-<script>
-    var videos = document.querySelectorAll('video');
-for(var i=0; i<videos.length; i++)
-   videos[i].addEventListener('play', function(){pauseAll(this)}, true);
-
-function pauseAll(elem){
-	for(var i=0; i<videos.length; i++){
-		//Is this the one we want to play?
-		if(videos[i] == elem) continue;
-		//Have we already played it && is it already paused?
-		if(videos[i].played.length > 0 && !videos[i].paused){
-		// Then pause it now
-		  videos[i].pause();
-		}
-	}
-  }
-</script>
-
-<script>
-    const contentDiv = document.getElementById('more_videos');
-    let btn = document.getElementById('moreShowButton');
-    function showMore(){
-        contentDiv.style.display="block";
-        moreShowButton.style.display="none";
-    }
-</script>
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            galleryItems.forEach((item, index) => {
+                const speed = (index % 3 + 1) * 0.15;
+                const offset = scrollY * speed;
+                item.style.setProperty('--parallax-offset', `${offset}px`);
+            });
+        });
+    </script>
+</body>
+</html>
